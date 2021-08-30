@@ -1,0 +1,8 @@
+package: gin_xm
+import:
+- package: github.com/fatih/color
+  version: v1.12.0
+- package: github.com/gin-gonic/gin
+  version: v1.7.4
+- package: github.com/spf13/viper
+  version: v1.8.1
