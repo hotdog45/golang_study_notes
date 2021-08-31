@@ -44,7 +44,7 @@ func main() {
 	r.LoadHTMLFiles("index.tmpl")
 
 	r.GET("/index", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.tmpl", "<a href='https://liwenzhou.com'>李文周的博客</a>")
+		c.HTML(http.StatusOK, "index.tmpl", "<a href='https://liwenzhou.com'>12231的博客</a>")
 	})
 	r.Run(":7070")
 
