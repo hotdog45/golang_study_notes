@@ -15,6 +15,16 @@ type UserInfo struct {
 	Name string
 	Gender string
 	Hobby string
+	//Age          sql.NullInt64
+	//Birthday     *time.Time
+	Email        string  `gorm:"type:varchar(100);unique_index"`
+	Role         string  `gorm:"size:255"` // 设置字段大小为255
+	MemberNumber *string `gorm:"unique;not null"` // 设置会员号（member number）唯一并且不为空
+	Num          int     `gorm:"AUTO_INCREMENT"` // 设置 num 为自增类型
+	Address      string  `gorm:"index:addr"` // 给address字段创建名为addr的索引
+	IgnoreMe     int     `gorm:"-"` // 忽略本字段
+	//AnimalID int64 `gorm:"primary_key"`
+
 }
 
 func main() {
@@ -29,11 +39,12 @@ func main() {
 	}
 	// 自动迁移
 	db.AutoMigrate(&UserInfo{})
-	u1 := UserInfo{gorm.Model{}, "七米22", "男", "篮球"}
-	u2 := UserInfo{gorm.Model{}, "沙河娜扎22", "女", "足球"}
+	var str = "q212121"
+	u1 := UserInfo{gorm.Model{}, "七米22", "男", "篮球","mac@12.cim","dsfd",&str,123,"3222222222",1111}
+	//u2 := UserInfo{gorm.Model{}, "沙河娜扎22", "女", "足球"}
 	// 创建记录
 	db.Create(&u1)
-	db.Create(&u2)
+	//db.Create(&u2)
 
 	r := gin.Default()
 	r.GET("/users", func(c *gin.Context) {
